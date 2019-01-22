@@ -14,8 +14,8 @@ script {
  def server = Artifactory.server serverName
   def uploadSpec = """{
                     "files": [{
-                       "pattern": patternType,
-                       "target": targetPath"
+                       "pattern": "patternType",
+                       "target": "targetPath"
                     }]
                  }"""
                  
