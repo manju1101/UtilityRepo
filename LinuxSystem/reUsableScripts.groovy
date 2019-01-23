@@ -9,16 +9,21 @@ def checkOutRepo(String repo, branch, String credentials){
     git repo,branch,credentials
 }
 
+
+
 def uploadToArtifactory(String serverName, String patternType, String targetPath){
- def server = Artifactory.server serverName
-  def uploadSpec = """{
-                    "files": [{
-                       "pattern": "patternType",
-                       "target": "targetPath"
-                    }]
-                 }"""
-                 
-  server.upload(uploadSpec)
+
+    script{
+         def server = Artifactory.server serverName
+          def uploadSpec = """{
+                            "files": [{
+                               "pattern": \"${patternType}\",
+                               "target": \"${targetPath}\"
+                            }]
+                         }"""
+            println uploadSpec
+          server.upload(uploadSpec)
+    }
 }
 
 /*def uploadArti(){
@@ -28,6 +33,17 @@ def uploadToArtifactory(String serverName, String patternType, String targetPath
                        "target": "example-repo-local/Devops301_${env.BUILD_NUMBER}/"
                     }]
                  }"""
+}*/
+/*def uploadToArtifactory(String serverName, String patternType, String targetPath){
+ def server = Artifactory.server serverName
+  def uploadSpec = """{
+                    "files": [{
+                       "pattern": "patternType",
+                       "target": "targetPath"
+                    }]
+                 }"""
+                 
+  server.upload(uploadSpec)
 }*/
 
 return this
