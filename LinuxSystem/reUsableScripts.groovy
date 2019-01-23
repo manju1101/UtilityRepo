@@ -10,7 +10,6 @@ def checkOutRepo(String repo, branch, String credentials){
 }
 
 def uploadToArtifactory(String serverName, String patternType, String targetPath){
-script {
  def server = Artifactory.server serverName
   def uploadSpec = """{
                     "files": [{
@@ -20,7 +19,6 @@ script {
                  }"""
                  
   server.upload(uploadSpec)
-  }
 }
 
 /*def uploadArti(){
